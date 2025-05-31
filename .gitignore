@@ -16,6 +16,9 @@ node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+!.env.sample
+!frontend/.env.sample
+!backend/.env.sample
 
 # Logs
 npm-debug.log*
