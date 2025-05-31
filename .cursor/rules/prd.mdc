@@ -1,0 +1,182 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Product Requirements Document (PRD): Notion Clone - AI Knowledge Architect
+📌 1. Overview
+Product Name: Notion Clone (with AI Knowledge Architect)
+Vision: To create an exact, pixel-perfect replica of Notion's user experience and functionality, enhanced with a suite of powerful, integrated AI tools for advanced knowledge management and discovery.
+Goal:
+Build a Notion-style documentation and workspace builder, meticulously replicating its UI, UX, and core features.
+Integrate "Killer AI Add-ons" to provide unique value: AI Auto-Linker, Knowledge Graph Builder, Auto Tag Generator, and Workspace Q&A.
+Target Users: Individuals and teams seeking the power and flexibility of Notion, combined with cutting-edge AI capabilities for enhanced productivity and insight.
+Core Tenet: Uncompromising fidelity to Notion's design and functionality, augmented by seamless AI integration.
+🏗️ 2. Core Notion Functionality (Replication Scope)
+This section outlines the Notion features to be replicated. "Pixel-perfect" implies identical visual appearance, layout, interactions, and animations.
+2.1 Workspace & Page Management
+* 2.1.1 CRUD Operations: Create, Read, Update, Delete for Workspaces and Pages.
+* 2.1.2 Page Structure:
+* Titles, Icons (emojis, uploaded), Cover Images.
+* Content composed of "Blocks" (see Rich Text Editor).
+* Metadata: Timestamps, authors, comments, version history.
+* 2.1.3 Page Hierarchy & Navigation:
+* Infinitely nested pages.
+* Sidebar with collapsible tree structure.
+* Drag-and-drop reordering of pages.
+* Breadcrumbs.
+* Quick Find (Cmd/Ctrl+P).
+* Page locking.
+* 2.1.4 Workspace Features:
+* Multiple workspaces per user.
+* Workspace settings, members, billing (stub for future).
+* Switching between workspaces.
+* Templates (ability to create and use page/database templates).
+2.2 Rich Text & Block-Based Editor (Notion-Identical)
+* 2.2.1 Supported Blocks (Comprehensive List - examples):
+* Basic: Text, Headings (H1-H3), Bulleted List, Numbered List, To-do List, Toggle List, Quote, Divider, Link to Page, Callout.
+* Inline: Mentions (people, pages, dates), Reminders, Equations (LaTeX).
+* Media: Image, Video, Audio, Code Block (with language selection & copy), File, Web Bookmark.
+* Embeds: Replicate Notion's extensive list of supported embeds (Google Drive, Maps, Figma, Twitter, etc.).
+* Database Blocks: Table (inline/full-page), Board (inline/full-page), Gallery (inline/full-page), List (inline/full-page), Calendar (inline/full-page), Timeline (inline/full-page).
+* Advanced: Table of Contents, Button, Breadcrumb, Synced Block, Columns, Equation.
+* 2.2.2 Editor Features:
+* Slash (/) commands for block creation and formatting.
+* Drag-and-drop reordering of blocks.
+* Block handles for options menu (duplicate, delete, turn into, color, copy link).
+* Inline formatting (bold, italic, underline, strikethrough, code, color, background color, links).
+* Multi-block selection and operations.
+* Full-width page option.
+* Customizable text/font styles (serif, mono, default).
+* Small text option.
+2.3 Databases (Notion-Identical)
+* 2.3.1 Database Creation: As inline or full-page blocks.
+* 2.3.2 Property Types: Text, Number, Select, Multi-select, Date, Person, Files & Media, Checkbox, URL, Email, Phone, Formula, Relation, Rollup, Created Time, Created By, Last Edited Time, Last Edited By.
+* 2.3.3 Views:
+* Multiple views per database (Table, Board, List, Calendar, Gallery, Timeline).
+* Customization of visible properties per view.
+* Filtering (simple and advanced filter groups with AND/OR logic).
+* Sorting (by multiple properties).
+* Grouping (for Board, Table, List views).
+* 2.3.4 Database Interactions:
+* Opening database entries as pages.
+* Editing properties directly in views or within the page.
+* Calculations (Count, Sum, Average, etc.) at the bottom of table columns.
+* Database templates.
+2.4 Collaboration & Sharing
+* 2.4.1 Real-time Collaboration: Multiple users editing the same page simultaneously with presence indicators.
+* 2.4.2 Comments: Page-level and block-level comments, @mentions, resolving comments.
+* 2.4.3 Sharing & Permissions:
+* Share with individuals, groups (future), or publicly.
+* Permission levels (Full access, Can edit, Can comment, Can view).
+* Guest access.
+* Share to web (with options like "Allow duplicate as template," "Allow comments," "Allow editing" - if applicable).
+* 2.4.4 Notifications & Updates: In-app "All Updates" feed.
+2.5 User Accounts & Authentication
+* Email/password, Google, Apple OAuth (replicating Notion's options).
+* Session management, security settings (e.g., 2FA if Notion supports).
+* User profiles and settings.
+2.6 Search & Navigation
+* Workspace-wide quick find (Cmd/Ctrl+P) with recently visited, fuzzy matching.
+* Search results page with filters (Created by, Date, Page, etc.).
+🤖 3. AI-Powered Killer Add-ons
+3.1 AI Auto-Linker
+* Objective: As a user writes content, the AI intelligently suggests and/or (optionally) automatically creates links to other relevant pages within the workspace.
+* Workflow:
+1. Real-time content analysis (on pause, on save, or as-you-type with debounce).
+2. Identify key entities, concepts, or phrases in the current text.
+3. Use embedding models to represent these concepts and search for semantically similar page titles or content chunks in a vector database of the workspace.
+4. If a strong match (above a configurable threshold) is found:
+* Suggestion Mode (Default): Non-intrusively suggest the link (e.g., an underline, a small pop-up). User clicks to confirm and create the link.
+* Auto-Insert Mode (Optional, User-Enabled): Automatically convert the text to an internal link. (Requires careful UX to avoid disruption).
+* Components: Embedding model (e.g., OpenAI's text-embedding-3-small), Vector Database (Pinecone, Weaviate, Qdrant), NLP for entity/concept extraction.
+3.2 Knowledge Graph Builder
+* Objective: Provide a dynamic, interactive visualization of the relationships between pages in the workspace.
+* Nodes: Each page is a node (displaying title, icon, perhaps key tags).
+* Edges: Represent relationships:
+* Explicit internal links (created manually or by AI Auto-Linker).
+* Strong semantic similarity between pages (identified by AI).
+* Shared tags or parent-child relationships.
+* Features:
+* Force-directed graph layout.
+* Zoom, pan, drag nodes.
+* Clicking a node opens the page or a preview.
+* Filtering nodes/edges (e.g., by tag, date, link type).
+* Color-coding nodes (e.g., by tags, page type).
+* Tools: Cytoscape.js, vis-network, D3.js, or similar.
+3.3 Auto Tag Generator
+* Objective: AI automatically analyzes page content and generates relevant semantic tags to improve organization, search, and filtering.
+* Workflow:
+1. On page creation or significant update.
+2. Page content is processed by an NLP model or LLM.
+3. Extract key topics, entities, and concepts.
+4. Generate a list of suggested tags (e.g., 3-10 tags).
+5. User Interaction: Present suggested tags to the user. User can accept, reject, edit, or add their own tags. AI tags should be clearly distinguishable if mixed with manual tags initially.
+* Use Cases: Powers faceted search, filters in knowledge graph, helps AI Auto-Linker.
+* Tools: NLP libraries (spaCy), LLMs with prompting (OpenAI API).
+3.4 Question Answering on Workspace
+* Objective: Allow users to ask natural language questions (e.g., "What is our pricing strategy?") and receive concise, contextually accurate answers sourced directly from their workspace content.
+* Workflow (RAG - Retrieval Augmented Generation):
+1. User inputs a question via a dedicated UI element.
+2. The question is embedded.
+3. A vector search is performed across a pre-indexed corpus of all workspace page content (chunked appropriately).
+4. Top-k relevant content chunks are retrieved.
+5. These chunks are provided as context to an LLM, along with the original question, using a carefully crafted prompt (e.g., "Based only on the following context, answer the user's question. If the answer is not in the context, say so. Context: [...]. Question: [...]").
+6. The LLM's answer is displayed to the user, along with clear citations/links to the source page(s) or content chunks.
+* Components: Content chunking strategy, embedding model, vector database, LLM (e.g., GPT-3.5/4), RAG orchestration (LangChain, LlamaIndex).
+* UI: Prominent Q&A input, loading/processing indicators, answer display card with source links.
+📐 4. Data Models (High-Level)
+User, Workspace, Page (as in previous PRD, but expanded for all Notion properties).
+Block: id, pageId, type (text, heading, image, database, etc.), content (JSON specific to block type), properties (styling, settings), parentId (for nesting within blocks like toggles), order.
+Database: id, pageId (if inline), title, icon, cover, propertiesDefinition (schema), viewsDefinition.
+DatabaseRow/Item: id, databaseId, propertyValues (JSON object mapping property ID to value).
+Comment: id, pageId, blockId (optional), userId, text, resolved, createdAt.
+Embedding, Tag (as before).
+Many more supporting models for permissions, versions, notifications, etc.
+🖥️ 5. UI/UX Design
+Pixel-Perfect Replication: The UI must be an exact visual and interactive match to Notion across all features. This includes layouts, spacing, typography, colors, icons, animations, and responsiveness.
+AI Feature Integration: AI features should feel seamlessly integrated, not bolted on. Suggestions and AI-driven UI elements should be intuitive and follow Notion's design language.
+Performance: Despite the complexity, the UI must remain fast and responsive, matching Notion's perceived performance.
+🧪 6. Tech Stack (Suggested)
+Frontend: React (Next.js/Vite), TypeScript. CSS-in-JS (e.g., Styled Components, Emotion) or utility-first (Tailwind CSS) chosen carefully to enable pixel-perfection. State management (Redux Toolkit, Zustand). Editor library (ProseMirror/Tiptap or Slate.js, heavily customized).
+Backend: Node.js (NestJS, Express.js with TypeScript, or tRPC).
+Database (Primary): PostgreSQL (for relational integrity, JSONB support).
+Vector Store: Pinecone, Weaviate, Qdrant, or PGVector.
+AI/NLP: OpenAI APIs (GPT-4, embeddings), Hugging Face models, LangChain/LlamaIndex.
+Real-time: WebSockets (Socket.io) or services like Ably/Pusher.
+Graph Visuals: Cytoscape.js, D3.js.
+Deployment: Vercel/Netlify (frontend), AWS/GCP/Azure (backend, databases).
+📅 7. Milestones & Phased Development (Crucial for Feasibility)
+Achieving a "pixel-perfect Notion clone with all its functionalities" PLUS the advanced AI features is a multi-year endeavor for a significant team. For a smaller team or solo developer, this must be broken into extremely long-term phases:
+Phase 0: Deep Dive & Core Architecture 
+Intensive study of Notion's UI/UX, block structures, data models (via observation).
+Architect core backend systems, database schema for basic page/block CRUD.
+Setup foundational frontend with editor choice (Tiptap/Slate) and basic block rendering.
+Phase 1: MVP - Basic Page Editing & Hierarchy 
+Implement core page CRUD, sidebar hierarchy (no drag/drop yet).
+Implement a subset of essential blocks (Text, Headings, Lists, Code).
+Basic user authentication.
+Focus on getting the editor feel approaching Notion's for these core blocks.
+Phase 2: Expanding Core Notion Features 
+Implement more block types (Images, Callouts, Dividers).
+Drag & drop for pages and blocks.
+Basic inline database (Table view only, limited properties).
+Basic sharing (view-only links).
+Phase 3: AI Feature - Auto Tag Generator 
+Integrate backend for AI tagging.
+Develop UI for tag suggestions and management.
+Phase 4: AI Feature - Workspace Q&A
+Setup embedding pipeline for workspace content.
+Develop RAG system and Q&A UI.
+Phase 5: AI Feature - Auto-Linker 
+Develop suggestion-based auto-linking.
+Phase 6: AI Feature - Knowledge Graph 
+Develop visualization and data backend for the graph.
+Further Phases (Year 3+):
+Full database functionality (all views, properties, relations, rollups).
+Real-time collaboration.
+Advanced sharing & permissions.
+Comments, notifications, version history.
+All remaining block types and embeds.
+Pixel-perfect polish across every single element and interaction. This is an ongoing effort throughout all phases but will require dedicated passes.
+Performance optimization at scale.

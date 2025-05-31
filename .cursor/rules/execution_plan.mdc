@@ -1,0 +1,138 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Overall Project Goal: To create a Notion-inspired documentation and workspace application with core organizational features, enhanced by AI capabilities for knowledge discovery, linking, and summarization. The long-term aspiration is high fidelity with Notion, achieved through iterative development.
+
+Phase 1: Core Foundation & Basic Functionality (MVP Core)
+Objective: Establish a working application with fundamental user management, workspace creation, and basic page editing capabilities.
+MoSCoW Prioritization for Phase 1:
+MUST HAVE (M):
+Backend:
+[M] User authentication (email/password registration & login).
+[M] Secure password hashing.
+[M] JWT generation and validation for session management.
+[M] Basic User model (email, password).
+[M] Basic Workspace model (name, ownerId).
+[M] API endpoints for user registration and login.
+[M] API endpoint for creating a new workspace.
+[M] API endpoint for listing user's workspaces.
+[M] Basic Page model (title, workspaceId, authorId, content placeholder).
+[M] API endpoint for creating a new page within a workspace.
+[M] API endpoint for retrieving a page's basic data (title).
+Frontend:
+[M] Basic project setup (React with Next.js/Vite).
+[M] UI for User Registration and Login forms.
+[M] Logic to call authentication APIs and handle JWTs (store/retrieve).
+[M] Basic authenticated routing (protecting app routes).
+[M] UI for creating a new workspace.
+[M] UI to display a list of user's workspaces.
+[M] UI for creating a new page (e.g., a button in the sidebar).
+[M] Basic page display area (showing title).
+[M] Simple sidebar structure to list pages (non-interactive tree for now).
+SHOULD HAVE (S):
+Backend:
+[S] API endpoint for updating page title.
+[S] API endpoint for deleting a page (soft delete).
+Frontend:
+[S] UI for updating page title.
+[S] UI for deleting a page (with confirmation).
+[S] Basic error handling and display for API calls.
+COULD HAVE (C):
+Backend:
+[C] API endpoint for updating workspace name.
+Frontend:
+[C] UI for updating workspace name.
+[C] Basic loading indicators for API calls.
+WON'T HAVE (W) (for this phase):
+Rich text editing, block-level operations, page nesting, AI features, advanced search, sharing, real-time collaboration, databases, etc.
+Phase 2: Rich Text Editor & Page Hierarchy
+Objective: Implement a functional rich text editor with core block types and enable basic page nesting.
+MoSCoW Prioritization for Phase 2:
+MUST HAVE (M):
+Backend:
+[M] Update Page model to store structured content (e.g., JSON for Tiptap/Slate).
+[M] API endpoint to save/update page content (rich text).
+[M] API endpoint to retrieve page content.
+[M] Implement parent-child relationships for pages in the Page model.
+[M] API endpoints to manage page hierarchy (e.g., set parent page).
+Frontend:
+[M] Integrate Rich Text Editor (Tiptap/Slate.js).
+[M] Implement core block types: Paragraph, Headings (H1-H3), Bullet & Numbered Lists.
+[M] Basic inline formatting: Bold, Italic.
+[M] Save page content to the backend.
+[M] Display page content from the backend.
+[M] Sidebar: Display pages in a hierarchical tree structure.
+[M] Sidebar: Allow collapsing/expanding parent pages.
+SHOULD HAVE (S):
+Backend:
+[S] API support for reordering pages in the hierarchy.
+Frontend:
+[S] Implement additional block types: To-do Checkboxes, Quotes.
+[S] Slash (/) command for block creation (basic implementation).
+[S] Drag-and-drop reordering of pages in the sidebar.
+[S] Basic keyboard shortcuts for editor actions.
+COULD HAVE (C):
+Frontend:
+[C] Implement block type: Code Blocks (no syntax highlighting yet).
+[C] Implement block type: Images (basic upload and display).
+[C] Drag and reorder blocks within the editor.
+WON'T HAVE (W) (for this phase):
+Advanced block types (tables, embeds), AI features, advanced search, real-time collaboration, comments, version history.
+Phase 3: Initial AI Features & Enhanced Usability
+Objective: Integrate foundational AI features (Auto-Tagging, Workspace Q&A) and improve overall usability.
+MoSCoW Prioritization for Phase 3:
+MUST HAVE (M):
+Backend:
+[M] Embedding model schema.
+[M] Service to generate and store embeddings for page content (for Q&A).
+[M] API endpoint for Workspace Q&A (RAG pipeline: query embedding, vector search, LLM prompt).
+[M] API endpoint for Auto Tag Generator (content analysis, tag suggestion).
+[M] Update Page model to store tags.
+Frontend:
+[M] UI for Workspace Q&A: input field, display area for answers and source links.
+[M] UI for Auto Tag Generator: display suggested tags, allow user to accept/reject/edit.
+[M] Integrate Q&A and Auto-Tagging with backend APIs.
+[M] Display tags on pages.
+[M] Basic full-text search functionality (title + content).
+[M] Cmd+K / Ctrl+K quick find for pages.
+SHOULD HAVE (S):
+Backend:
+[S] API for filtering pages by tags.
+[S] Refine embedding strategy (e.g., chunking improvements).
+Frontend:
+[S] UI for filtering pages by tags.
+[S] Improved loading states and error handling for AI features.
+[S] Syntax highlighting for Code Blocks (if implemented in Phase 2).
+[S] Image upload functionality (if block implemented in Phase 2).
+COULD HAVE (C):
+Backend:
+[C] Basic versioning for page content (simple history).
+Frontend:
+[C] UI for AI Auto-Linking suggestions (display only, no auto-insert yet).
+[C] Basic UI for viewing page history (if backend supports).
+WON'T HAVE (W) (for this phase):
+Full Knowledge Graph, advanced database features, real-time collaboration, comprehensive sharing, comments.
+Phase 4: Advanced Features & Polish (Iterative)
+Objective: Begin implementing more complex Notion features and AI enhancements, focusing on iterative improvement and user experience. This phase is more open-ended and will likely consist of multiple smaller sprints based on priorities.
+MUST HAVE (M) (Examples, to be prioritized within this phase):
+Backend & Frontend:
+[M] AI Auto-Linking Engine: Full implementation (suggestion & optional auto-insert).
+[M] Basic Knowledge Graph: Visualization of page links and tags.
+[M] Enhanced Rich Text Editor: More block types (e.g., Tables, Callouts).
+[M] Improved Search: Fuzzy search, more filters.
+SHOULD HAVE (S) (Examples):
+Backend & Frontend:
+[S] Basic page sharing (view-only links).
+[S] User roles (Viewer role distinct from Editor).
+[S] Performance optimizations for large workspaces.
+COULD HAVE (C) (Examples):
+Backend & Frontend:
+[C] Simple commenting system on pages.
+[C] Basic page templates.
+WON'T HAVE (W) (Potentially deferred to even later phases or if scope is reduced):
+Full real-time collaborative editing.
+Complex Notion-style databases with relations and rollups.
+Advanced permission systems.
+Full version history with diffs.

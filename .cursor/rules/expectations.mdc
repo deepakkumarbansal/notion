@@ -1,0 +1,88 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## 1. Core Project Vision & Goal
+
+*   **Vision:** To create an intelligent workspace inspired by Notion, where ideas connect, knowledge is easily accessible, and productivity is amplified through AI.
+*   **Long-Term Aspirational Goal:** To aspire towards a high-fidelity visual and interactive experience closely mirroring Notion's core user experience and a curated set of its most impactful functionalities, developed iteratively, and augmented by unique AI-powered features (Auto-Linker, Knowledge Graph, Auto-Tag, Workspace Q&A).
+*   **Pragmatic Approach:** While high fidelity is aspirational, development will be iterative and phased. The initial focus (MVP) is on delivering a robust, usable core inspired by Notion, integrated with a subset of the AI features.
+
+## 2. Scope & Phasing
+
+*   **MVP Scope:** As defined in the Frontend (FRD) and Backend (BRD) Requirements Documents, the MVP will focus on:
+    *   Core Page & Workspace Management (CRUD, hierarchy).
+    *   A functional Rich Text Editor with a defined set of essential blocks.
+    *   User Authentication (email/password).
+    *   Basic Search.
+    *   Initial AI Features: AI Auto-Tag Generator (with user confirmation) and Workspace Q&A.
+*   **Post-MVP Development:** Features will be added iteratively based on the FRD/BRD, prioritizing those that deliver the most value or are foundational for other features. The selection of which 'Notion functionalities' to pursue post-MVP will be strategic, focusing on impact and feasibility, rather than a blind pursuit of 'all' features. This includes:
+    *   More advanced block types.
+    *   Notion-style Databases (a significant, multi-phase effort).
+    *   Remaining AI features (Auto-Linker, Knowledge Graph).
+    *   Real-time collaboration.
+    *   Advanced sharing, permissions, comments, notifications, version history.
+*   **Visual Fidelity ("Pixel Perfection") as an Iterative Process:**
+    *   Visual fidelity to Notion is a continuous goal, not an upfront requirement for every MVP feature.
+    *   Functionality and usability take precedence in early iterations.
+    *   Visual refinement will occur throughout development and in dedicated polish phases. The live Notion application will serve as the primary visual reference.
+    *   It is explicitly understood that the MVP and early phases will prioritize functionality and a 'Notion-inspired' look and feel. Obsessing over exact pixel matching for every element in early stages is counterproductive to the 'vibe coding' spirit and rapid iteration.
+
+## 3. Development Process ("Vibe Coding")
+
+*   **Flexibility:** While FRD/BRD provide a roadmap, the "vibe coding" approach allows for flexibility in the exact order of minor feature implementation within a phase, or for exploring emergent ideas that align with the core vision. This flexibility primarily applies to the *path* taken to achieve a phase's goals, not to arbitrarily changing the core goals of a phase without consideration and documentation updates.
+*   **Iteration:** The project will be built in sprints or cycles of development, focusing on delivering functional increments.
+*   **Focus on "Flow":** Prioritize maintaining development momentum and enjoyment. If a particular feature becomes a major roadblock, it's acceptable to temporarily shelve it (if not critical for the current phase's core) and return to it later.
+*   **Documentation:** FRD and BRD will be treated as living documents, updated when significant decisions are made that alter the core scope or approach of a planned phase, or when requirements for a feature are substantially clarified or changed.
+*   **Self-Correction:** Regularly review progress against the FRD/BRD and the core vision. Be willing to adjust priorities if a path isn't yielding desired results.
+
+## 4. What "Done" Means
+
+*   **For a Feature/Component (MVP & beyond):**
+    1.  **Functionally Complete:** Meets the requirements outlined in the FRD/BRD for the current phase.
+    2.  **Backend Integrated:** Frontend interacts correctly with corresponding backend APIs.
+    3.  **Visually Coherent:** Aligns with the established color theme, typography, and general UI style. For MVP, "inspired by Notion" is acceptable; for later phases, "closer to Notion" is expected.
+    4.  **Usable:** The feature can be used by a target user to achieve its intended purpose without significant confusion or bugs.
+    5.  **Basic Error Handling:** Gracefully handles common error scenarios (e.g., API errors, invalid input).
+*   **For "Pixel Perfect" / High-Fidelity Aspects:** This is a high bar. "Done" here means a specific UI element or interaction is indistinguishable from Notion's equivalent by a discerning user, considering spacing, typography, color, hover/active states, and subtle animations. This level of 'done' will be applied *selectively* to key UI elements or user flows in later phases when dedicated polish is prioritized. It is not a global requirement for every component post-MVP.
+
+## 5. Non-Goals (Especially for MVP/Early Phases)
+*   **Replicating *every single* Notion feature from day one.** This is unrealistic.
+*   **Achieving 100% pixel-perfection across the entire application during MVP.**
+*   **Premature optimization** for extreme scale before core functionality is stable.
+*   **Supporting all browsers and devices perfectly from day one.** Focus on modern desktop browsers (Chrome, Firefox, Safari, Edge) first.
+*   **Building a complex administrative backend or analytics suite.**
+*   **Implementing features not outlined in the FRD/BRD without explicit re-scoping.**
+
+## 6. Technology Choices
+
+*   **Frontend:** React (with Next.js or Vite), chosen editor library (Tiptap/Slate), styling solution (Tailwind CSS or CSS-in-JS).
+*   **Backend:** MERN Stack (MongoDB, Express.js, Node.js).
+*   **AI:** OpenAI APIs for LLM and embeddings (for MVP), Vector DB (Post-MVP or if MongoDB Atlas Vector Search is insufficient).
+*   **Adherence:** The project is expected to adhere to these core technology choices unless a compelling, well-justified reason for deviation arises and is documented.
+
+## 7. Quality & Testing
+
+*   **Developer Testing:** Developers are expected to manually test their features thoroughly.
+*   **"It Works on My Machine" is Not Enough:** Strive for consistency across development and (eventual) staging/production environments.
+*   **Bug Fixing:** Critical bugs that block core functionality should be prioritized. Cosmetic bugs or minor issues may be deferred based on severity.
+*   **Automated Testing (Aspirational for Early Phases):** While full TDD/BDD might be too rigid for "vibe coding" MVP, introducing unit tests for critical backend logic (e.g., authentication, core data manipulation) and potentially snapshot tests or simple interaction tests for key frontend components is highly encouraged as the project matures and stabilizes. The 'vibe' should accommodate pragmatic testing where it provides clear value and confidence.
+
+## 8. Communication & Collaboration (If Applicable)
+
+*   (If this becomes a team project, this section would detail communication channels, code review processes, etc. For a solo project with a conceptual agent, this is about maintaining clarity in your own documentation and thought process.)
+*   **Clarity in Documentation:** Ensure FRD, BRD, and this `EXPECTATIONS.md` are clear and serve as reliable sources of truth.
+
+## 9. Success Metrics (Qualitative for "Vibe Coding" MVP)
+
+*   **Functional MVP:** Is the core set of features defined for MVP working and usable?
+*   **Developer Satisfaction:** Does the development process feel productive and enjoyable ("good vibes")?
+*   **Learning & Exploration:** Is the project providing opportunities to learn and experiment with the chosen technologies and AI concepts?
+*   **User Feedback (If/When Shared):** If the project is shared, positive initial feedback on usability and the core idea would be a success indicator.
+*   **Progress Towards Vision:** Does each completed phase deliver a more capable and refined product, aligning with the FRD/BRD for that phase, and demonstrably adding user-perceivable value inspired by the Notion experience?
+
+* **rules_to_follow:**
+don't take decisions on your own
+discuss before assuming
+if multiple approach tell me why you are using one over other

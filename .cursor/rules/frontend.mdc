@@ -1,0 +1,111 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+📌 1. Overview
+Product Name: Notion Clone (with AI Knowledge Architect)
+Goal: To develop a highly interactive and visually faithful frontend replica of Notion, built with React, that seamlessly integrates with the backend to deliver core Notion functionalities and specified AI enhancements.
+Target Users: Individuals and teams seeking the power and flexibility of Notion, combined with cutting-edge AI capabilities for enhanced productivity and insight.
+Guiding Principles:
+Pixel-Perfect Replication (Iterative Goal): Strive to match Notion's UI/UX, including layout, spacing, typography, iconography, and interaction patterns. This is an iterative goal, focusing on core elements first.
+Component-Based Architecture: Leverage React's component model for a modular and maintainable codebase.
+Responsive Design: Ensure a usable experience across common desktop screen sizes. Mobile responsiveness is a secondary, post-MVP goal.
+Performance: Optimize for a smooth and fast user experience, especially within the editor.
+Accessibility (A11y): Keep accessibility best practices in mind during development (e.g., keyboard navigation, ARIA attributes where appropriate).
+🎨 2. General UI/UX Principles & Visual Style
+Visual Fidelity (Iterative Goal): Strive to match Notion's UI/UX. For the coding agent: When in doubt, refer to Notion's live application as the primary source of truth for visual appearance, spacing, and micro-interactions for implemented features. This is an iterative goal; core elements first.
+Interaction Design: Replicate Notion's key interaction patterns for implemented features.
+State Management: Implement robust state management.
+Feedback & Load States: Provide clear visual feedback.
+Keyboard First: Support extensive keyboard navigation.
+2.1. Color Theme (Notion-Inspired Light Mode - MVP)
+Primary Background: #FFFFFF (or a very near off-white like #FBFBFA)
+Secondary Background (e.g., Sidebar, Modals): #F7F7F5 (if primary is #FFFFFF) or a subtle variation.
+Primary Text: #191919 (or #37352F)
+Secondary Text (placeholders, metadata, disabled): #9B9A97 (or #787774)
+Accent/Interactive Elements (buttons, links, active states):
+Primary Accent (Blue): #2076D6 (or #0A85D1)
+Hover/Active States: Slightly darker or lighter shades of the primary accent, or a subtle background change. Agent: Observe Notion for specific hover/active visual cues.
+Borders & Dividers: #E3E2E0 (or #DEDEDC) - use sparingly.
+Code Blocks Background: #FBFBFA (or #F7F6F3)
+Error/Destructive Actions (Red): #E03E3E
+Success/Positive Actions (Green): #458A50
+Selection/Highlight Background (Text Editor): rgba(45, 170, 219, 0.3) (or #D4E9F4)
+Shadows: Subtle, soft shadows (e.g., box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05), 0px 2px 8px rgba(0, 0, 0, 0.04);). Agent: Match shadow style from Notion's modals/dropdowns.
+Dark Mode is Post-MVP.
+2.2. Text Styling & Typography (Notion-Inspired)
+Primary Font Family (CSS): font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+Monospace Font Family (CSS): font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+Base Font Size (Content): 16px.
+Line Height (Content): 1.6.
+Headings (Sizes are approximate, visual match is key):
+H1: 32px, font-weight: 600.
+H2: 24px, font-weight: 600.
+H3: 20px, font-weight: 600.
+UI Text (Buttons, Labels, Sidebar): 14px, font-weight: 500 or 400.
+Font Weights: Regular: 400, Medium: 500, Semi-Bold/Bold: 600.
+Letter Spacing: Default, unless specific negative spacing is observed on large Notion headings.
+Paragraph Spacing: Consistent vertical rhythm (e.g., 1em bottom margin on paragraphs).
+🖥️ 3. Key UI Screens & Views (MVP Focus)
+(Same as previous FRD, but with emphasis on visual states)
+3.1. Authentication Pages:
+Inputs should have clear focus states (e.g., blue border, matching Notion).
+3.2. Main Application Shell:
+Sidebar:
+Active page in tree should be visually distinct (e.g., background highlight with primary accent color).
+Hover states on page tree items.
+3.3. Search Modal:
+Selected search result item should have a clear hover and active/selected state.
+3.4. AI Q&A Panel (MVP):
+Source links should be clearly interactive (e.g., blue, underlined on hover).
+🧩 4. Core Reusable Components (React)
+(Same as previous FRD, with styling notes)
+Buttons: Implement distinct visual styles for primary (filled blue), secondary (blue outline or subtle gray), and tertiary/icon (transparent background, icon only). Include hover, active, and disabled states for each.
+Block Components (Crucial for Editor - MVP):
+Agent: Each block component must visually match its Notion counterpart in terms of typography, spacing, and any specific UI elements (e.g., checkbox for TodoListItemBlock, language display for CodeBlock).
+ImageBlock: Include a placeholder UI for when the image is loading or if the URL is broken.
+✨ 5. Specific Feature UI/UX Requirements (MVP Focus)
+5.1. Workspace & Page Management:
+Sidebar:
+"New Page" button interaction should feel responsive.
+Drag-and-drop reordering (if MVP): Visual cues during drag (e.g., placeholder line, item opacity).
+Page:
+Editable page title: Should look like static text until clicked/focused, then become an input.
+5.2. Rich Text Editor (using Tiptap/Slate.js integrated into React):
+Slash (/) Command Menu:
+Appearance: A floating panel, styled like Notion's.
+Interaction: Keyboard navigable, item hover states.
+Inline Formatting Toolbar:
+Appearance: Small floating toolbar appearing on text selection.
+Interaction: Buttons for bold, italic, etc., should reflect current selection state.
+Block Manipulation (MVP):
+Block Handles: Appear on hover/focus of a block, allowing access to options menu (MVP: "Delete block"). Visually match Notion's block handles.
+Drag-and-drop reordering: Clear visual feedback of item being dragged and drop target.
+5.3. User Authentication:
+Loading state on forms during API calls (e.g., button disabled with spinner).
+5.4. Search:
+Debounce API calls from search input to avoid excessive requests.
+5.5. AI Feature UI (MVP):
+Auto Tag Generator:
+Suggested tags should be visually distinct from user-added tags until accepted (e.g., different border style, small "AI" badge).
+"Accept" / "Dismiss" actions should provide immediate visual feedback.
+Workspace Q&A:
+Answer display area should handle multi-line text and code snippets gracefully if the LLM returns them.
+🛠️ 6. Frontend Tech Stack (React Ecosystem)
+(Same as previous FRD)
+Styling Implementation Note for Agent:
+Prioritize creating a global theme provider (if using CSS-in-JS) or a comprehensive Tailwind config.
+Develop a small set of core UI components (Button, Input, Modal) first and perfect their styling and states against Notion's equivalents. Then reuse these.
+Use browser developer tools frequently to inspect Notion's styling for reference.
+🌊 7. Phased Implementation Plan (Frontend - Vibe-Driven Sequence)
+Phase Alpha: Foundation & Shell
+Priority: Functional auth flow, basic shell layout. Get colors and primary fonts established.
+Phase Beta: Core Editor & Content
+Priority: Rendering MVP blocks accurately. Slash command and inline formatting basic functionality. Search modal.
+Styling Focus: Make the editor blocks look and feel like Notion's for the MVP set.
+Phase Gamma: Initial AI Feature UI
+Priority: Clear and usable UI for tag suggestions and Q&A interaction.
+Phase Delta: Polish, Interactions & Refinements
+Priority: Smooth out interactions (drag-and-drop, keyboard navigation). Focus on hover states, focus states, and subtle animations to enhance the "Notion feel."
+Pixel-Perfecting Iteration: Revisit components from earlier phases and refine their visual details closer to Notion.

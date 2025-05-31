@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion Clone - PRD Flowchart</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .mermaid {
+            background-color: white;
+            padding: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Notion Clone - Product Requirements Flowchart</h1>
+        <div class="mermaid">
+            graph TB
+                Start[Project Start] --> Phase0[Phase 0: Deep Dive & Architecture]
+                
+                %% Phase 0
+                Phase0 --> Study[Study Notion UI/UX]
+                Phase0 --> CoreArch[Core Architecture Design]
+                Phase0 --> DevSetup[Development Setup]
+                
+                Study --> Phase1[Phase 1: MVP]
+                CoreArch --> Phase1
+                DevSetup --> Phase1
+                
+                %% Phase 1
+                Phase1 --> Auth[Authentication System]
+                Phase1 --> Pages[Basic Page CRUD]
+                Phase1 --> Blocks[Essential Block Types]
+                Phase1 --> Editor[Basic Editor Setup]
+                
+                Auth --> Phase2[Phase 2: Core Features]
+                Pages --> Phase2
+                Blocks --> Phase2
+                Editor --> Phase2
+                
+                %% Phase 2
+                Phase2 --> EnhancedBlocks[Enhanced Block Types]
+                Phase2 --> DragDrop[Drag & Drop]
+                Phase2 --> BasicDB[Basic Database]
+                Phase2 --> BasicShare[Basic Sharing]
+                
+                EnhancedBlocks --> AIPhase[AI Features Integration]
+                DragDrop --> AIPhase
+                BasicDB --> AIPhase
+                BasicShare --> AIPhase
+                
+                %% AI Phases
+                AIPhase --> Phase3[Phase 3: Auto Tag Generator]
+                AIPhase --> Phase4[Phase 4: Workspace Q&A]
+                AIPhase --> Phase5[Phase 5: Auto-Linker]
+                AIPhase --> Phase6[Phase 6: Knowledge Graph]
+                
+                %% Phase 3 Details
+                Phase3 --> Tags[Tag System]
+                
+                %% Phase 4 Details
+                Phase4 --> RAG[RAG System]
+                
+                %% Phase 5 Details
+                Phase5 --> AutoLink[Auto-Linking System]
+                
+                %% Phase 6 Details
+                Phase6 --> Graph[Graph Visualization]
+                
+                %% Future Phases
+                Tags --> Future[Future Phases]
+                RAG --> Future
+                AutoLink --> Future
+                Graph --> Future
+                
+                Future --> FullDB[Full Database Features]
+                Future --> RealTime[Real-time Collaboration]
+                Future --> Advanced[Advanced Features]
+                
+                FullDB --> End[Project Evolution]
+                RealTime --> End
+                Advanced --> End
+                
+                %% Styling
+                classDef phase fill:#f9f,stroke:#333,stroke-width:2px
+                classDef feature fill:#bbf,stroke:#333,stroke-width:1px
+                classDef ai fill:#bfb,stroke:#333,stroke-width:1px
+                
+                class Phase0,Phase1,Phase2,Phase3,Phase4,Phase5,Phase6,Future phase
+                class Auth,Pages,Blocks,Editor,EnhancedBlocks,DragDrop,BasicDB,BasicShare feature
+                class Tags,RAG,AutoLink,Graph ai
+        </div>
+    </div>
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html> 
